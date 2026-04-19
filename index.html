@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Chat App</title>
+  <style>
+    body { font-family: Arial; background: #f2f2f2; }
+    .box { max-width: 400px; margin: auto; padding: 10px; }
+    input, button { padding: 10px; margin: 5px; width: 100%; }
+    .msg { background: white; padding: 10px; margin: 5px 0; border-radius: 10px; }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>Simple Chat</h2>
+  <input id="name" placeholder="Enter name">
+  <input id="msg" placeholder="Write message">
+  <button onclick="send()">Send</button>
+
+  <div id="chat"></div>
+</div>
+
+<script>
+let messages = [];
+
+function send() {
+  let name = document.getElementById("name").value;
+  let msg = document.getElementById("msg").value;
+
+  if(name && msg){
+    messages.push(name + ": " + msg);
+    show();
+  }
+}
+
+function show(){
+  let chat = document.getElementById("chat");
+  chat.innerHTML = "";
+  messages.forEach(m => {
+    chat.innerHTML += "<div class='msg'>" + m + "</div>";
+  });
+}
+</script>
+
+</body>
+</html>
